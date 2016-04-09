@@ -26,7 +26,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                 ,------|------|------|       |------+--------+------.
  *                                 |      |      | End  |       | PgDn |        |      |
  *                                 |Backsp|Delete|------|       |------| Enter  |Space |
- *                                 | ace  |      | LAlt |       |TabCtl|        |      |
+ *                                 | ace  |      | LAlt/|       | Ctrl/|        |      |
+ *                                 |      |      |Insert|       | Tab  |        |      |
  *                                 `--------------------'       `----------------------'
  */
 // If it accepts an argument (i.e, is a function), it doesn't need KC_.
@@ -40,7 +41,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
          KC_FN1,      KC_GRV,      KC_QUOT,KC_LEFT, LT(MDIA, KC_RGHT),
                                                      KC_APP,  KC_HOME,
                                                                KC_END,
-                                              KC_BSPC,KC_DELT,KC_LALT,
+                                              KC_BSPC,KC_DELT,ALT_T(INS),
         // right hand
              TG(3),       KC_6,   KC_7,   KC_8,   KC_9,   KC_0,           KC_MINS,
              TG(2),       KC_Y,   KC_U,   KC_I,   KC_O,   KC_P,           KC_BSLS,
@@ -49,7 +50,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                        LT(MDIA, KC_UP),   KC_DOWN,KC_LBRC,KC_RBRC,         KC_FN1,
              KC_PGUP,        CTL_T(KC_ESC),
              KC_PGDN,
-             CTL_T(KC_TAB),KC_ENT, KC_SPC
+             ALT_T(KC_TAB),KC_ENT, KC_SPC
     ),
 /* Keymap 1: Symbol Layer
  *
@@ -104,7 +105,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   |      |      |      | Lclk | Rclk |                                       |      |      |      |      |      |
+ *   |      |      |      |      |      |                                       |      |      |      |      |      |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
  *                                        |      | Prev |       |VolUp |      |
@@ -176,6 +177,49 @@ KEYMAP(
         KC_TRNS, KC_TRNS,
         KC_TRNS,
         KC_NO,  KC_N,   KC_M
+),
+
+/* Keymap 5: Alt Symbol Layer
+ *
+ * ,--------------------------------------------------.           ,--------------------------------------------------.
+ * |        |  F1  |  F2  |  F3  |  F4  |  F5  |      |           |      |  F6  |  F7  |  F8  |  F9  |  F10 |   F11  |
+ * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
+ * |        |   \  |   /  |   [  |   ]  |   ~  |      |           |      |   ~  |   =  |   +  |   -  |   _  |   F12  |
+ * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+ * |        |   !  |   @  |   #  |   $  |   %  |------|           |------|   ^  |   &  |   *  |   (  |   )  |        |
+ * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+ * |        |   {  |   }  |   (  |   )  |   `  |      |           |      |   {  |   }  |   [  |   ]  |   +  |        |
+ * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+ *   |      |      |      |      |      |                                       |      |      |   ,  |   .  |      |
+ *   `----------------------------------'                                       `----------------------------------'
+ *                                        ,-------------.       ,-------------.
+ *                                        |      |      |       |      | Calc |
+ *                                 ,------|------|------|       |------+------+------.
+ *                                 |      |      |      |       |      |      |      |
+ *                                 |      |      |------|       |------|      |      |
+ *                                 |      |      |      |       |      |      |      |
+ *                                 `--------------------'       `--------------------'
+ */
+// SYMBOLS
+[SYMB] = KEYMAP(
+       // left hand
+       KC_TRNS,KC_F1,  KC_F2,  KC_F3,  KC_F4,  KC_F5,  KC_TRNS,
+       KC_TRNS,KC_EXLM,KC_AT,  KC_LCBR,KC_RCBR,KC_PIPE,KC_TRNS,
+       KC_TRNS,KC_HASH,KC_DLR, KC_LPRN,KC_RPRN,KC_GRV,
+       KC_TRNS,KC_PERC,KC_CIRC,KC_LBRC,KC_RBRC,KC_TILD,KC_TRNS,
+       KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
+                                       KC_TRNS,KC_TRNS,
+                                               KC_TRNS,
+                               KC_TRNS,KC_TRNS,KC_TRNS,
+       // right hand
+       KC_TRNS, KC_F6,   KC_F7,  KC_F8,   KC_F9,   KC_F10,  KC_F11,
+       KC_TRNS, KC_UP,   KC_7,   KC_8,    KC_9,    KC_ASTR, KC_F12,
+                KC_DOWN, KC_4,   KC_5,    KC_6,    KC_PLUS, KC_TRNS,
+       KC_TRNS, KC_AMPR, KC_1,   KC_2,    KC_3,    KC_BSLS, KC_TRNS,
+                         KC_TRNS,KC_DOT,  KC_0,    KC_EQL,  KC_TRNS,
+       KC_TRNS, KC_CALC,
+       KC_TRNS,
+       KC_TRNS, KC_TRNS, KC_TRNS
 ),
 
 };
